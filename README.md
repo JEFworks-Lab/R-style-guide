@@ -6,10 +6,14 @@ R is a high-level programming language used primarily for statistical computing 
 **[Start reading ☞](http://jefworks.github.io/R-style-guide/)**
 
 ## Additional Guides and References
-http://r-pkgs.had.co.nz/style.html
-http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#todo
-https://docs.google.com/document/d/1esDVxyWvH8AsX-VJa-8oqWaHLs4stGlIbk8kLc5VlII/edit
-http://cran.r-project.org/
+- http://r-pkgs.had.co.nz/style.html
+- http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#todo
+- https://docs.google.com/document/d/1esDVxyWvH8AsX-VJa-8oqWaHLs4stGlIbk8kLc5VlII/edit
+- http://cran.r-project.org/
 
 ## Inspiration
-http://mdo.github.io/code-guide/
+- http://mdo.github.io/code-guide/
+
+## Other Info
+- made with [Jekyll](https://help.github.com/articles/using-jekyll-with-pages/)
+- color scheme from [Shiny](http://shiny.rstudio.com/)
