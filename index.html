@@ -21,6 +21,10 @@ layout: default
       <li><a href="#organization">Organization</a><ul>
 	<li><a href="#commenting">Commentng</a></li>
       </ul></li>
+      <li><a href="#tips">Additional Tips</a><ul>
+	<li><a href="#loops">Loops</a>
+	<li><a href="#repeat">Repeat</a>
+      </ul></li>
       <li><a href="#references-and-resources">References and Resources</a><ul>
 	<li><a href="#additional-guides">Additional Guides</a></li>
 	<li><a href="#inspiration">Inspiration</a></li>
@@ -39,7 +43,7 @@ layout: default
     <ul>
       <li>Use a meaningful and descriptive names</li>
       <li>End in <code>.R</code></li>
-      <li>Separate words by underscores <code>_</code> not dots <code>.</code></li>
+      <li>Separate words by <code>_</code> not <code>.</code></li>
     </ul>
   </div>
   <div class="col">
@@ -91,9 +95,9 @@ function.name <- function()
   <div class="col">
     <h3>General Syntax</h3>
     <ul>
-      <li>To indent, use 2 spaces, not tabs</li>
-      <li>For assignments, use arrows <code><-</code>, not equal signs <code>=</code> </li>
-      <li>Do not use semi-colons</li>
+      <li>To indent, use 2 spaces not tabs</li>
+      <li>For assignments, use <code><-</code> not <code>=</code> </li>
+      <li>Do not use <code>;</code></li>
       <li>Go to the next line if the line length is more than 80 characters</li>
     </ul>
  </div>
@@ -114,8 +118,8 @@ x = 23; y = 12
   <div class="col">
     <h3>Spacing</h3>
     <ul>
-      <li>Place spaces around all binary operators <code>=, +, -, <-,</code> etc.</li>
-      <li>Place a space before the left parenthesis, except in a function call</li>
+      <li>Place spaces around all binary operators such as <code>=, +, -, <-,</code> etc.</li>
+      <li>Place a space before the <code>(</code>, except in a function call</li>
     </ul>
  </div>
  <div class="col">
@@ -137,8 +141,8 @@ if(a<d) {
   <div class="col">
     <h3>Curly Braces</h3>
     <ul>
-      <li> Do not place opening curly braces on its own line </li>
-      <li> Place closing curly braces on its own line </li>
+      <li> Do not place <code>{</code> on its own line </li>
+      <li> Place <code>}</code> on its own line </li>
       <li> Surround <code>else</code> statements with curly braces </li>
     </ul>
  </div>
@@ -190,6 +194,60 @@ else a <- d
 add <- function(x, y) {
   # general comment
   x + y  # inline comment
+}
+{% endhighlight %}
+  </div>
+</div>
+
+
+<div class="heading" id="tips">
+  <h2>Additional Tips</h2>
+</div>
+
+<div class="section" id="loops">
+  <div class="col">
+    <h3>Loops</h3>
+    <ul>
+      <li>Use <code>seq(along=x)</code> to protect against instances where <code>x</code> is empty</li>
+      <li>Use <code>apply, lapply, etc</code> when possible
+    </ul>
+ </div>
+ <div class="col">
+{% highlight R %}
+# Good
+lapply(seq(along=x), function(i) {
+  doSomething(i)
+})
+
+# Acceptable
+for (i in seq(along=x)) {
+  doSomething(i)
+}
+
+# Bad
+for (i in 1:length(x)) {
+  doSomething(i)
+}
+{% endhighlight %}
+  </div>
+</div>
+<div class="section" id="repeat">
+  <div class="col">
+    <h3>Repeat</h3>
+    <ul>
+      <li>Use <code>repeat</code> for better interpretability</li>
+    </ul>
+ </div>
+ <div class="col">
+{% highlight R %}
+# Good
+repeat {
+  ...
+}
+
+# Bad
+while (TRUE) {
+  ...
 }
 {% endhighlight %}
   </div>
