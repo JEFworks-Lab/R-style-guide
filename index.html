@@ -1,83 +1,219 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+---
+layout: default
+---
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
-    <title>R-style-guide by JEFworks</title>
-  </head>
+<div class="heading" id="toc">
+  <h2>Table of contents</h2>
+</div>
+<div class="section toc">
+  <div class="col">
+    <ul>
+      <li><a href="#naming-conventions">Naming Conventions</a><ul>
+	<li><a href="#file-names">File Names</a></li>
+	<li><a href="#identifiers">Identifiers</a></li>
+      </ul></li>
+      <li><a href="#syntax">Syntax</a><ul>
+        <li><a href="#general-syntax">General Syntax</a></li>
+        <li><a href="#spacing">Spacing</a></li>
+        <li><a href="#curly-braces">Curly Braces</a></li>
+      </ul></li>
+      <li><a href="#organization">Organization</a><ul>
+	<li><a href="#commenting">Commentng</a></li>
+      </ul></li>
+      <li><a href="#references-and-resources">References and Resources</a><ul>
+	<li><a href="#additional-guides">Additional Guides</a></li>
+	<li><a href="#inspiration">Inspiration</a></li>
+      </ul></li>							     
+    </ul>
+  </div>
+</div>
 
-  <body>
-    <header>
-      <div class="inner">
-        <h1>R-style-guide</h1>
-        <h2>Best practices for readable, sharable, and verifiable R code</h2>
-        <a href="https://github.com/JEFworks/R-style-guide" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<div class="heading" id="naming-conventions">
+  <h2>Naming Conventions</h2>
+</div>
+<div class="section" id="file-names">
+  <div class="col">
+    <h3>File Names</h3>
+    <ul>
+      <li>Use a meaningful and descriptive names</li>
+      <li>End in <code>.R</code></li>
+      <li>Separate words by underscores <code>_</code> not dots <code>.</code></li>
+    </ul>
+  </div>
+  <div class="col">
+{% highlight R %}
+# Good
+get_data.R
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+# Bad
+foo.bar.r
+89317240934735.r
+{% endhighlight %}
+  </div>
+</div>
+<div class="section" id="identifiers">
+  <div class="col">
+    <h3>Identifiers</h3>
+    <ul>
+      <li>Use meaningful and descriptive names</li>
+      <li>For variables, preferably use all lower case letters and words separated with <code>.</code> but CamelCase is also accepted</li>
+      <li>Function and class names should adhere to CamelCase</li>
+      <li>Do not use <code>.</code> with class names due to potential confusion with S3 method declarations
+      <li>Do not use <code>_</code> or <code>-</code> with identifiers</li>
+    </ul>
+  </div>
+  <div class="col">
+{% highlight R %}
+# Good
+variable.name
+functionName <- function()
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+# Also acceptable
+variableName
+FunctionName <- function() 
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+# Bad
+variable_name
+function_name <- function()
+function.name <- function() 
+{% endhighlight %}
+  </div>
+</div>
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<div class="heading" id="syntax">
+  <h2>Syntax</h2>
+</div>
 
-<h3>
-<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<div class="section" id="general-syntax">
+  <div class="col">
+    <h3>General Syntax</h3>
+    <ul>
+      <li>To indent, use 2 spaces, not tabs</li>
+      <li>For assignments, use arrows <code><-</code>, not equal signs <code>=</code> </li>
+      <li>Do not use semi-colons</li>
+      <li>Go to the next line if the line length is more than 80 characters</li>
+    </ul>
+ </div>
+  <div class="col">
+{% highlight R %}
+# Good 
+x <- 23
+y <- 12
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+# Bad
+x = 23; y = 12
+23 -> x
+{% endhighlight %}
+  </div>
+</div>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<div class="section" id="spacing">
+  <div class="col">
+    <h3>Spacing</h3>
+    <ul>
+      <li>Place spaces around all binary operators <code>=, +, -, <-,</code> etc.</li>
+      <li>Place a space before the left parenthesis, except in a function call</li>
+    </ul>
+ </div>
+ <div class="col">
+{% highlight R %}
+# Good
+if (a < d) {
+  a <- (b + c) * d
+}
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+# Bad
+if(a<d) {
+  a <- (b+c)*d
+}
+{% endhighlight %}
+  </div>
+</div>
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<div class="section" id="curly-braces">
+  <div class="col">
+    <h3>Curly Braces</h3>
+    <ul>
+      <li> Do not place opening curly braces on its own line </li>
+      <li> Place closing curly braces on its own line </li>
+      <li> Surround <code>else</code> statements with curly braces </li>
+    </ul>
+ </div>
+ <div class="col">
+{% highlight R %}
+# Good
+if (a < d) {
+  a <- (b + c) * d
+}
+else {
+  a <- d
+}
 
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
+# Bad
+if( a < d ) 
+{
+  a <- (b+c)*d
+}
+else a <- d
+{% endhighlight %}
+  </div>
+</div>
 
-        <aside id="sidebar">
-          <a href="https://github.com/JEFworks/R-style-guide/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/JEFworks/R-style-guide/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
 
-          <p class="repo-owner"><a href="https://github.com/JEFworks/R-style-guide"></a> is maintained by <a href="https://github.com/JEFworks">JEFworks</a>.</p>
+<div class="heading" id="organization">
+  <h2>Organization</h2>
+</div>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
+<div class="section" id="commenting">
+  <div class="col">
+    <h3>Commentng</h3>
+    <ul>
+      <li>General comments should be identified with <code>#</code> followed by a space</li>
+      <li>Inline comments need 2 spaces before the <code>#</code> </li>
+      <li>Function and object descriptions should adhere to roxygen guidelines</li>
+    </ul>
+ </div>
+ <div class="col">
+{% highlight R %}
+#' Add together two numbers.
+#' 
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of x and y.
+#'
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+add <- function(x, y) {
+  # general comment
+  x + y  # inline comment
+}
+{% endhighlight %}
+  </div>
+</div>
 
-  
-  </body>
-</html>
+
+<div class="heading" id="references-and-resources">
+  <h2>References and Resources</h2>
+</div>
+
+<div class="section" id="additional-guides">
+  <div class="col">
+    <h3>Additional Guides</h3>
+    <li><a href="http://r-pkgs.had.co.nz/style.html">R Style Guide by Hadley Wickham</a></li>
+    <li><a href="http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#todo">Google R Style Guide</a></li>
+    <li><a href="https://docs.google.com/document/d/1esDVxyWvH8AsX-VJa-8oqWaHLs4stGlIbk8kLc5VlII/edit">R Coding Conventions by Henrik Bengtsson</li>
+    <li><a href="http://cran.r-project.org/">The Comprehensive R Archive Network</a></li>
+  </div>
+</div>
+<div class="section" id="inspiration">
+  <div class="col">
+    <h3>Inspiration</h3>
+    <li><a href="http://mdo.github.io/code-guide/">Code Guide by mdo</a></li>
+  </div>
+</div>
+
+
