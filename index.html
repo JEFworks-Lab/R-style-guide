@@ -4,7 +4,7 @@ layout: default
 
 <div class="section">
   <div class="col">
-R is a high-level programming language used primarily for statistical computing and graphics. R does not have any well defined coding recommendations or de facto standards. This style guide provides some recommendations based on personal experience and expert opinions (see <a href="#additional-guides">Additional Guides</a>). Use your best judgement and common sense when deciding whether to adhere to these recommendations. Be consistent. Ultimately, a unified style will help make collaboration and sharing code easier.   
+R is a high-level programming language used primarily for statistical computing and graphics. R does not have any well defined coding recommendations or de facto standards. This style guide provides some recommendations based on personal experience and expert opinions (see <a href="#additional-guides">Additional Guides</a>). Use your best judgement and common sense when deciding whether to adhere to these recommendations. Be consistent. Use style to enhance legibility. Ultimately, a unified style will help make collaboration and sharing code easier.   
   </div>
 </div>
 
@@ -67,8 +67,8 @@ foo.bar.r
     <h3>Identifiers</h3>
     <ul>
       <li>Use meaningful and descriptive names</li>
-      <li>For variables, preferably use all lower case letters and words separated with <code>.</code> but CamelCase is also accepted</li>
-      <li>Function and class names should adhere to CamelCase</li>
+      <li>For variables, preferably use camelCase but for backward compatibility with historical functions, all lower case letters and words separated with <code>.</code> is also accepted</li>
+      <li>Function and class names should adhere to camelCase</li>
       <li>Do not use <code>.</code> with class names due to potential confusion with S3 method declarations
       <li>Do not use <code>_</code> or <code>-</code> with identifiers</li>
     </ul>
@@ -76,11 +76,11 @@ foo.bar.r
   <div class="col">
 {% highlight R %}
 # Good
-variable.name
+variableName
 functionName <- function()
 
 # Acceptable
-variableName
+variable.name
 FunctionName <- function() 
 
 # Bad
@@ -100,7 +100,7 @@ function.name <- function()
   <div class="col">
     <h3>General Syntax</h3>
     <ul>
-      <li>To indent, use 2 spaces not tabs</li>
+      <li>To indent, use 4 spaces not tabs</li>
       <li>For assignments, use <code><-</code> not <code>=</code> </li>
       <li>Do not use <code>;</code></li>
       <li>Go to the next line if the line length is more than 80 characters</li>
@@ -124,19 +124,23 @@ x = 23; y = 12
     <h3>Spacing</h3>
     <ul>
       <li>Place spaces around all binary operators such as <code>=, +, -, <-,</code> etc.</li>
+      <li>Do not use spaces around <code>=</code> for assigning function arguments.
       <li>Place a space before the <code>(</code>, except in a function call</li>
+      <li>Use space after a comma</li>
     </ul>
  </div>
  <div class="col">
 {% highlight R %}
 # Good
-if (a < d) {
-  a <- (b + c) * d
+someFunction <- function(a, b, c, d=100) {
+    if (a < d) {
+        a <- (b + c) * d
+    }
 }
 
 # Bad
-if(a<d) {
-  a <- (b+c)*d
+someFunction <- function(a,b,c,d = 100) { 
+    if(a<d) a<-(b+c)*d 
 }
 {% endhighlight %}
   </div>
@@ -155,16 +159,16 @@ if(a<d) {
 {% highlight R %}
 # Good
 if (a < d) {
-  a <- (b + c) * d
+    a <- (b + c) * d
 }
 else {
-  a <- d
+    a <- d
 }
 
 # Bad
-if( a < d ) 
+if (a < d) 
 {
-  a <- (b+c)*d
+    a <- (b + c) * d
 }
 else a <- d
 {% endhighlight %}
@@ -178,11 +182,12 @@ else a <- d
 
 <div class="section" id="commenting">
   <div class="col">
-    <h3>Commentng</h3>
+    <h3>Commenting</h3>
     <ul>
       <li>General comments should be identified with <code>#</code> followed by a space</li>
       <li>Inline comments need 2 spaces before the <code>#</code> </li>
       <li>Function and object descriptions should adhere to roxygen guidelines</li>
+      <li>Separate function comments from previous code by at least 1 blank line
     </ul>
  </div>
  <div class="col">
@@ -221,17 +226,17 @@ add <- function(x, y) {
 {% highlight R %}
 # Good
 lapply(seq(along=x), function(i) {
-  doSomething(i)
+    doSomething(i)
 })
 
 # Acceptable
 for (i in seq(along=x)) {
-  doSomething(i)
+    doSomething(i)
 }
 
 # Bad
 for (i in 1:length(x)) {
-  doSomething(i)
+    doSomething(i)
 }
 {% endhighlight %}
   </div>
@@ -270,6 +275,7 @@ while (TRUE) {
     <li><a href="http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#todo">Google R Style Guide</a></li>
     <li><a href="https://docs.google.com/document/d/1esDVxyWvH8AsX-VJa-8oqWaHLs4stGlIbk8kLc5VlII/edit">R Coding Conventions by Henrik Bengtsson</li>
     <li><a href="http://cran.r-project.org/">The Comprehensive R Archive Network</a></li>
+    <li><a href="http://master.bioconductor.org/developers/how-to/coding-style/">Bioconductor Coding Style</a></li>
   </div>
 </div>
 <div class="section" id="inspiration">
