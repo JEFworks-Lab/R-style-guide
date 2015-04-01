@@ -151,7 +151,7 @@ someFunction <- function(a,b,c,d = 100) {
     <h3>Curly Braces</h3>
     <ul>
       <li> Do not place <code>{</code> on its own line </li>
-      <li> Place <code>}</code> on its own line </li>
+      <li> Place <code>}</code> on its own line unless followed by <code>else</code></li>
       <li> Surround <code>else</code> statements with curly braces </li>
     </ul>
  </div>
@@ -160,8 +160,7 @@ someFunction <- function(a,b,c,d = 100) {
 # Good
 if (a < d) {
     a <- (b + c) * d
-}
-else {
+} else {
     a <- d
 }
 
@@ -169,8 +168,7 @@ else {
 if (a < d) 
 {
     a <- (b + c) * d
-}
-else a <- d
+} else a <- d
 {% endhighlight %}
   </div>
 </div>
