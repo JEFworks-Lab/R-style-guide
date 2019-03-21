@@ -48,14 +48,18 @@ R is a high-level programming language used primarily for statistical computing 
     <ul>
       <li>Use a meaningful and descriptive names</li>
       <li>End in <code>.R</code></li>
-      <li>Separate words by <code>_</code> not <code>.</code></li>
+      <li>Preferably use camelCase</li>
+      <li>If necessary, separate words by _ not .</li>
     </ul>
   </div>
   <div class="col">
 {% highlight R %}
 # Good
-get_data.R
+getData.R
 
+# Acceptable
+get_data.R
+      
 # Bad
 foo.bar.r
 89317240934735.r
@@ -67,6 +71,7 @@ foo.bar.r
     <h3>Identifiers</h3>
     <ul>
       <li>Use meaningful and descriptive names</li>
+      <li>Fpr functions, strive to use verbs in names</li>
       <li>For variables, preferably use camelCase but for backward compatibility with historical functions, all lower case letters and words separated with <code>.</code> is also accepted</li>
       <li>Function and class names should adhere to camelCase</li>
       <li>Do not use <code>.</code> with class names due to potential confusion with S3 method declarations
@@ -76,17 +81,22 @@ foo.bar.r
   <div class="col">
 {% highlight R %}
 # Good
-variableName
-functionName <- function()
+pcaEmbedding  # variable
+getPcaEmbedding <- function()  # function
 
 # Acceptable
-variable.name
-FunctionName <- function() 
+pca.embedding
+getEmb <- function() 
 
 # Bad
-variable_name
-function_name <- function()
-function.name <- function() 
+pca_embedding
+get_pca_embedding <- function()
+get.pca.embedding <- function() 
+
+# Really bad
+pe
+gpe <- function()
+foobar <- function()
 {% endhighlight %}
   </div>
 </div>
@@ -173,7 +183,25 @@ if (a < d)
   </div>
 </div>
 
+<div class="section" id="line-length">
+  <div class="col">
+    <h3>Line Length</h3>
+    <ul>
+	Keep each line less than 80 characters
+    </ul>
+ </div>
+ <div class="col">
+{% highlight R %}
+# Good
+someFunction(optionA = alpha,
+             optionB = bravo,
+             optionC = charlie,    
+             optionD = delta)
 
+# Bad
+someFunction(optionA = alpha, optionB = bravo, optionC = charlie, optionD = delta)
+{% endhighlight %}
+    
 <div class="heading" id="organization">
   <h2>Organization</h2>
 </div>
@@ -185,7 +213,7 @@ if (a < d)
       <li>General comments should be identified with <code>#</code> followed by a space</li>
       <li>Inline comments need 2 spaces before the <code>#</code> </li>
       <li>Function and object descriptions should adhere to roxygen guidelines</li>
-      <li>Separate function comments from previous code by at least 1 blank line
+      <li>Separate function comments from previous code using 2 blank lines
     </ul>
  </div>
  <div class="col">
@@ -216,19 +244,19 @@ add <- function(x, y) {
   <div class="col">
     <h3>Loops</h3>
     <ul>
-      <li>Use <code>seq(along=x)</code> to protect against instances where <code>x</code> is empty</li>
+      <li>Use <code>seq(along = x)</code> to protect against instances where <code>x</code> is empty</li>
       <li>Use <code>apply, lapply, etc</code> when possible
     </ul>
  </div>
  <div class="col">
 {% highlight R %}
 # Good
-lapply(seq(along=x), function(i) {
+lapply(seq(along = x), function(i) {
     doSomething(i)
 })
 
 # Acceptable
-for (i in seq(along=x)) {
+for (i in seq(along = x)) {
     doSomething(i)
 }
 
