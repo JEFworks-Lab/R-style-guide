@@ -8,10 +8,10 @@ R is a high-level programming language used primarily for statistical computing 
 Feel free to fork or clone and make your own R style guide for your lab, team, or collaborative R project.
 
 ## Additional Guides
+- https://style.tidyverse.org/
 - http://r-pkgs.had.co.nz/style.html
-- http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#todo
+- https://google.github.io/styleguide/Rguide.xml
 - https://docs.google.com/document/d/1esDVxyWvH8AsX-VJa-8oqWaHLs4stGlIbk8kLc5VlII/edit
-- http://cran.r-project.org/
 - http://master.bioconductor.org/developers/how-to/coding-style/
 
 ## Inspiration
