@@ -141,14 +141,14 @@ layout: default
 	{% highlight R %}
 	# Good
 	someFunction <- function(a, b, c, d = 100) {
-	if (a < d) {
-        a <- (b + c) * d
-	}
+	    if (a < d) {
+                a <- (b + c) * d
+	    }
 	}
 
 	# Bad
 	someFunction <- function(a,b,c,d= 100) { 
-	if(a<d) a<-(b+c)*d 
+	  if(a<d) a<-(b+c)*d 
 	}
 	{% endhighlight %}
     </div>
@@ -167,15 +167,15 @@ layout: default
 	{% highlight R %}
 	# Good
 	if (a < d) {
-	a <- (b + c) * d
+	    a <- (b + c) * d
 	} else {
-	a <- d
+	    a <- d
 	}
 
 	# Bad
 	if (a < d) 
 	{
-	a <- (b + c) * d
+	    a <- (b + c) * d
 	} else a <- d
 	{% endhighlight %}
     </div>
@@ -186,15 +186,21 @@ layout: default
 	<h3>Line Length</h3>
 	<ul>
 	    <li>Keep each line less than 80 characters</li>
+	    <li>Align lines by shared features like parameters if possible</li>
 	</ul>
     </div>
     <div class="col">
 	{% highlight R %}
 	# Good
 	someFunction(optionA = alpha,
-        optionB = bravo,
-        optionC = charlie,    
-        optionD = delta)
+                     optionB = bravo,
+                     optionC = charlie,    
+                     optionD = delta)
+
+	# Acceptable
+	someFunction(optionA = alpha,
+            optionB = bravo, optionC = charlie,    
+            optionD = delta)
 
 	# Bad
 	someFunction(optionA = alpha, optionB = bravo, optionC = charlie, optionD = delta)
@@ -228,8 +234,8 @@ layout: default
 	#' add(1, 1)
 	#' add(10, 1)
 	add <- function(x, y) {
-	# general comment
-	x + y  # inline comment
+	    # general comment
+	    x + y  # inline comment
 	}
 	{% endhighlight %}
     </div>
@@ -252,17 +258,17 @@ layout: default
 	{% highlight R %}
 	# Good
 	lapply(seq(along = x), function(i) {
-	doSomething(i)
+	    doSomething(i)
 	})
 
 	# Acceptable
 	for (i in seq(along = x)) {
-	doSomething(i)
+	    doSomething(i)
 	}
 
 	# Bad
 	for (i in 1:length(x)) {
-	doSomething(i)
+	    doSomething(i)
 	}
 	{% endhighlight %}
     </div>
@@ -278,12 +284,12 @@ layout: default
 	{% highlight R %}
 	# Good
 	repeat {
-	...
+	    ...
 	}
 
 	# Bad
 	while (TRUE) {
-	...
+	    ...
 	}
 	{% endhighlight %}
     </div>
