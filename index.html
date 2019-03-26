@@ -53,17 +53,17 @@ layout: default
 	</ul>
     </div>
     <div class="col">
-	{% highlight R %}
-	# Good
-	getData.R
+{% highlight R %}
+# Good
+getData.R
 
-	# Acceptable
-	get_data.R
+# Acceptable
+get_data.R
 	
-	# Bad
-	foo.bar.r
-	89317240934735.r
-	{% endhighlight %}
+# Bad
+foo.bar.r
+89317240934735.r
+{% endhighlight %}
     </div>
 </div>
 <div class="section" id="identifiers">
@@ -79,25 +79,25 @@ layout: default
 	</ul>
     </div>
     <div class="col">
-	{% highlight R %}
-	# Good
-	pcaEmbedding  # variable
-	getPcaEmbedding <- function()  # function
+{% highlight R %}
+# Good
+pcaEmbedding  # variable
+getPcaEmbedding <- function()  # function
 
-	# Acceptable
-	pca.embedding
-	getEmb <- function() 
+# Acceptable
+pca.embedding
+getEmb <- function() 
 
-	# Bad
-	pca_embedding
-	get_pca_embedding <- function()
-	get.pca.embedding <- function() 
+# Bad
+pca_embedding
+get_pca_embedding <- function()
+get.pca.embedding <- function() 
 
-	# Really bad
-	pe
-	gpe <- function()
-	foo-bar <- function()
-	{% endhighlight %}
+# Really bad
+pe
+gpe <- function()
+foo-bar <- function()
+{% endhighlight %}
     </div>
 </div>
 
@@ -116,15 +116,15 @@ layout: default
 	</ul>
     </div>
     <div class="col">
-	{% highlight R %}
-	# Good 
-	x <- 23
-	y <- 12
+{% highlight R %}
+# Good 
+x <- 23
+y <- 12
 
-	# Bad
-	x = 23; y = 12
-	23 -> x
-	{% endhighlight %}
+# Bad
+x = 23; y = 12
+23 -> x
+{% endhighlight %}
     </div>
 </div>
 
@@ -138,19 +138,19 @@ layout: default
 	</ul>
     </div>
     <div class="col">
-	{% highlight R %}
-	# Good
-	someFunction <- function(a, b, c, d = 100) {
-	    if (a < d) {
-                a <- (b + c) * d
-	    }
-	}
+{% highlight R %}
+# Good
+someFunction <- function(a, b, c, d = 100) {
+    if (a < d) {
+        a <- (b + c) * d
+    }
+}
 
-	# Bad
-	someFunction <- function(a,b,c,d= 100) { 
-	  if(a<d) a<-(b+c)*d 
-	}
-	{% endhighlight %}
+# Bad
+someFunction <- function(a,b,c,d= 100) { 
+  if(a<d) a<-(b+c)*d 
+}
+{% endhighlight %}
     </div>
 </div>
 
@@ -164,20 +164,20 @@ layout: default
 	</ul>
     </div>
     <div class="col">
-	{% highlight R %}
-	# Good
-	if (a < d) {
-	    a <- (b + c) * d
-	} else {
-	    a <- d
-	}
+{% highlight R %}
+# Good
+if (a < d) {
+    a <- (b + c) * d
+} else {
+    a <- d
+}
 
-	# Bad
-	if (a < d) 
-	{
-	    a <- (b + c) * d
-	} else a <- d
-	{% endhighlight %}
+# Bad
+if (a < d) 
+{
+    a <- (b + c) * d
+} else a <- d
+{% endhighlight %}
     </div>
 </div>
 
@@ -190,21 +190,21 @@ layout: default
 	</ul>
     </div>
     <div class="col">
-	{% highlight R %}
-	# Good
-	someFunction(optionA = alpha,
-                     optionB = bravo,
-                     optionC = charlie,    
-                     optionD = delta)
+{% highlight R %}
+# Good
+someFunction(optionA = alpha,
+             optionB = bravo,
+             optionC = charlie,    
+             optionD = delta)
 
-	# Acceptable
-	someFunction(optionA = alpha,
-            optionB = bravo, optionC = charlie,    
-            optionD = delta)
+# Acceptable
+someFunction(optionA = alpha,
+    optionB = bravo, optionC = charlie,    
+    optionD = delta)
 
-	# Bad
-	someFunction(optionA = alpha, optionB = bravo, optionC = charlie, optionD = delta)
-	{% endhighlight %}
+# Bad
+someFunction(optionA = alpha, optionB = bravo, optionC = charlie, optionD = delta)
+{% endhighlight %}
     </div>
 </div>
 
@@ -219,25 +219,31 @@ layout: default
 	    <li>General comments should be identified with <code>#</code> followed by a space</li>
 	    <li>Inline comments need 2 spaces before the <code>#</code> </li>
 	    <li>Function and object descriptions should adhere to roxygen guidelines</li>
-	    <li>Separate function comments from previous code using 2 blank lines
+	    <li>Separate function comments and function code with blank line
+	    <li>Functions from previous code using 2 blank lines
 	</ul>
     </div>
     <div class="col">
-	{% highlight R %}
-	#' Add together two numbers.
-	#' 
-	#' @param x A number.
-	#' @param y A number.
-	#' @return The sum of x and y.
-	#'
-	#' @examples
-	#' add(1, 1)
-	#' add(10, 1)
-	add <- function(x, y) {
-	    # general comment
-	    x + y  # inline comment
-	}
-	{% endhighlight %}
+{% highlight R %}
+#' Add together two numbers.
+#' 
+#' @param x A number.
+#' @param y A number.
+#'
+#' @return The sum of x and y.
+#'
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+#'
+add <- function(x, y) {
+    # general comment
+    x + y  # inline comment
+}
+
+
+#' Next function
+{% endhighlight %}
     </div>
 </div>
 
