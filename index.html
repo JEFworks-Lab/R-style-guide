@@ -261,22 +261,22 @@ add <- function(x, y) {
 	</ul>
     </div>
     <div class="col">
-	{% highlight R %}
-	# Good
-	lapply(seq(along = x), function(i) {
-	    doSomething(i)
-	})
+{% highlight R %}
+# Good
+lapply(seq(along = x), function(i) {
+    doSomething(i)
+})
 
-	# Acceptable
-	for (i in seq(along = x)) {
-	    doSomething(i)
-	}
+# Acceptable
+for (i in seq(along = x)) {
+    doSomething(i)
+}
 
-	# Bad
-	for (i in 1:length(x)) {
-	    doSomething(i)
-	}
-	{% endhighlight %}
+# Bad
+for (i in 1:length(x)) {
+    doSomething(i)
+}
+{% endhighlight %}
     </div>
 </div>
 <div class="section" id="repeat">
@@ -287,17 +287,17 @@ add <- function(x, y) {
 	</ul>
     </div>
     <div class="col">
-	{% highlight R %}
-	# Good
-	repeat {
-	    ...
-	}
+{% highlight R %}
+# Good
+repeat {
+    ...
+}
 
-	# Bad
-	while (TRUE) {
-	    ...
-	}
-	{% endhighlight %}
+# Bad
+while (TRUE) {
+    ...
+}
+{% endhighlight %}
     </div>
 </div>
 
