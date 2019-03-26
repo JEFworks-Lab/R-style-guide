@@ -3,314 +3,312 @@ layout: default
 ---
 
 <div class="section">
-  <div class="col">
-R is a high-level programming language used primarily for statistical computing and graphics. R does not have any well defined coding recommendations or de facto standards. This style guide provides some recommendations based on personal experience and expert opinions (see <a href="#additional-guides">Additional Guides</a>). Use your best judgement and common sense when deciding whether to adhere to these recommendations. Be consistent. Use style to enhance legibility. Ultimately, a unified style will help make collaboration and sharing code easier.   
-  </div>
+    <div class="col">
+	R is a high-level programming language used primarily for statistical computing and graphics. R does not have any well defined coding recommendations or de facto standards. This style guide provides some recommendations based on personal experience and expert opinions (see <a href="#additional-guides">Additional Guides</a>). Use your best judgement and common sense when deciding whether to adhere to these recommendations. Be consistent. Use style to enhance legibility. Ultimately, a unified style will help make collaboration and sharing code easier.   
+    </div>
 </div>
 
 <div class="heading" id="toc">
-  <h2>Table of contents</h2>
+    <h2>Table of contents</h2>
 </div>
 <div class="section toc">
-  <div class="col">
-    <ul>
-      <li><a href="#naming-conventions">Naming Conventions</a><ul>
-	<li><a href="#file-names">File Names</a></li>
-	<li><a href="#identifiers">Identifiers</a></li>
-      </ul></li>
-      <li><a href="#syntax">Syntax</a><ul>
-        <li><a href="#general-syntax">General Syntax</a></li>
-        <li><a href="#spacing">Spacing</a></li>
-        <li><a href="#curly-braces">Curly Braces</a></li>
-      </ul></li>
-      <li><a href="#organization">Organization</a><ul>
-	<li><a href="#commenting">Commentng</a></li>
-      </ul></li>
-      <li><a href="#tips">Additional Tips</a><ul>
-	<li><a href="#loops">Loops</a>
-	<li><a href="#repeat">Repeat</a>
-      </ul></li>
-      <li><a href="#references-and-resources">References and Resources</a><ul>
-	<li><a href="#additional-guides">Additional Guides</a></li>
-	<li><a href="#inspiration">Inspiration</a></li>
-      </ul></li>							     
-    </ul>
-  </div>
+    <div class="col">
+	<ul>
+	    <li><a href="#naming-conventions">Naming Conventions</a><ul>
+		<li><a href="#file-names">File Names</a></li>
+		<li><a href="#identifiers">Identifiers</a></li>
+	    </ul></li>
+	    <li><a href="#syntax">Syntax</a><ul>
+		<li><a href="#general-syntax">General Syntax</a></li>
+		<li><a href="#spacing">Spacing</a></li>
+		<li><a href="#curly-braces">Curly Braces</a></li>
+	    </ul></li>
+	    <li><a href="#organization">Organization</a><ul>
+		<li><a href="#commenting">Commentng</a></li>
+	    </ul></li>
+	    <li><a href="#tips">Additional Tips</a><ul>
+		<li><a href="#loops">Loops</a>
+		    <li><a href="#repeat">Repeat</a>
+	    </ul></li>
+		    <li><a href="#references-and-resources">References and Resources</a><ul>
+			<li><a href="#additional-guides">Additional Guides</a></li>
+			<li><a href="#inspiration">Inspiration</a></li>
+		    </ul></li>							     
+	</ul>
+    </div>
 </div>
 
 
 <div class="heading" id="naming-conventions">
-  <h2>Naming Conventions</h2>
+    <h2>Naming Conventions</h2>
 </div>
 <div class="section" id="file-names">
-  <div class="col">
-    <h3>File Names</h3>
-    <ul>
-      <li>Use a meaningful and descriptive names</li>
-      <li>End in <code>.R</code></li>
-      <li>Preferably use camelCase</li>
-      <li>If necessary, separate words by _ not .</li>
-    </ul>
-  </div>
-  <div class="col">
-{% highlight R %}
-# Good
-getData.R
+    <div class="col">
+	<h3>File Names</h3>
+	<ul>
+	    <li>Use a meaningful and descriptive names</li>
+	    <li>End in <code>.R</code></li>
+	    <li>Preferably use camelCase</li>
+	    <li>If necessary, separate words by <code>_</code> not <code>.</code></li>
+	</ul>
+    </div>
+    <div class="col">
+	{% highlight R %}
+	# Good
+	getData.R
 
-# Acceptable
-get_data.R
-      
-# Bad
-foo.bar.r
-89317240934735.r
-{% endhighlight %}
-  </div>
+	# Acceptable
+	get_data.R
+	
+	# Bad
+	foo.bar.r
+	89317240934735.r
+	{% endhighlight %}
+    </div>
 </div>
 <div class="section" id="identifiers">
-  <div class="col">
-    <h3>Identifiers</h3>
-    <ul>
-      <li>Use meaningful and descriptive names</li>
-      <li>Fpr functions, strive to use verbs in names</li>
-      <li>For variables, preferably use camelCase but for backward compatibility with historical functions, all lower case letters and words separated with <code>.</code> is also accepted</li>
-      <li>Function and class names should adhere to camelCase</li>
-      <li>Do not use <code>.</code> with class names due to potential confusion with S3 method declarations
-      <li>Do not use <code>_</code> or <code>-</code> with identifiers</li>
-    </ul>
-  </div>
-  <div class="col">
-{% highlight R %}
-# Good
-pcaEmbedding  # variable
-getPcaEmbedding <- function()  # function
+    <div class="col">
+	<h3>Identifiers</h3>
+	<ul>
+	    <li>Use meaningful and descriptive names</li>
+	    <li>For functions, strive to use verbs in names</li>
+	    <li>Variables should preferably adhere to camelCase. But for backward compatibility with historical functions, all lower case letters and words separated with <code>.</code> is also accepted</li>
+	    <li>Function and class names should adhere to camelCase</li>
+	    <li>Do not use <code>.</code> with class names due to potential confusion with S3 method declarations
+		<li>Do not use <code>_</code> or <code>-</code> with identifiers</li>
+	</ul>
+    </div>
+    <div class="col">
+	{% highlight R %}
+	# Good
+	pcaEmbedding  # variable
+	getPcaEmbedding <- function()  # function
 
-# Acceptable
-pca.embedding
-getEmb <- function() 
+	# Acceptable
+	pca.embedding
+	getEmb <- function() 
 
-# Bad
-pca_embedding
-get_pca_embedding <- function()
-get.pca.embedding <- function() 
+	# Bad
+	pca_embedding
+	get_pca_embedding <- function()
+	get.pca.embedding <- function() 
 
-# Really bad
-pe
-gpe <- function()
-foobar <- function()
-{% endhighlight %}
-  </div>
+	# Really bad
+	pe
+	gpe <- function()
+	foo-bar <- function()
+	{% endhighlight %}
+    </div>
 </div>
 
 
 <div class="heading" id="syntax">
-  <h2>Syntax</h2>
+    <h2>Syntax</h2>
 </div>
 
 <div class="section" id="general-syntax">
-  <div class="col">
-    <h3>General Syntax</h3>
-    <ul>
-      <li>To indent, use 4 spaces not tabs</li>
-      <li>For assignments, use <code><-</code> not <code>=</code> </li>
-      <li>Do not use <code>;</code></li>
-      <li>Go to the next line if the line length is more than 80 characters</li>
-    </ul>
-  </div>
-  <div class="col">
-{% highlight R %}
-# Good 
-x <- 23
-y <- 12
+    <div class="col">
+	<h3>General Syntax</h3>
+	<ul>
+	    <li>To indent, use 4 spaces not tabs</li>
+	    <li>For assignments, use <code><-</code> not <code>=</code> </li>
+	    <li>Do not use <code>;</code></li>
+	</ul>
+    </div>
+    <div class="col">
+	{% highlight R %}
+	# Good 
+	x <- 23
+	y <- 12
 
-# Bad
-x = 23; y = 12
-23 -> x
-{% endhighlight %}
-  </div>
+	# Bad
+	x = 23; y = 12
+	23 -> x
+	{% endhighlight %}
+    </div>
 </div>
 
 <div class="section" id="spacing">
-  <div class="col">
-    <h3>Spacing</h3>
-    <ul>
-      <li>Place spaces around all binary operators such as <code>=, +, -, <-,</code> etc.</li>
-      <li>Do not use spaces around <code>=</code> for assigning function arguments.
-      <li>Place a space before the <code>(</code>, except in a function call</li>
-      <li>Use space after a comma</li>
-    </ul>
- </div>
- <div class="col">
-{% highlight R %}
-# Good
-someFunction <- function(a, b, c, d=100) {
-    if (a < d) {
+    <div class="col">
+	<h3>Spacing</h3>
+	<ul>
+	    <li>Place spaces around all binary operators such as <code>=, +, -, <-,</code> etc.</li>
+	    <li>Place a space before the <code>(</code>, except in a function call</li>
+	    <li>Use space after a comma</li>
+	</ul>
+    </div>
+    <div class="col">
+	{% highlight R %}
+	# Good
+	someFunction <- function(a, b, c, d = 100) {
+	if (a < d) {
         a <- (b + c) * d
-    }
-}
+	}
+	}
 
-# Bad
-someFunction <- function(a,b,c,d = 100) { 
-    if(a<d) a<-(b+c)*d 
-}
-{% endhighlight %}
-  </div>
+	# Bad
+	someFunction <- function(a,b,c,d= 100) { 
+	if(a<d) a<-(b+c)*d 
+	}
+	{% endhighlight %}
+    </div>
 </div>
 
 <div class="section" id="curly-braces">
-  <div class="col">
-    <h3>Curly Braces</h3>
-    <ul>
-      <li> Do not place <code>{</code> on its own line </li>
-      <li> Place <code>}</code> on its own line unless followed by <code>else</code></li>
-      <li> Surround <code>else</code> statements with curly braces </li>
-    </ul>
- </div>
- <div class="col">
-{% highlight R %}
-# Good
-if (a < d) {
-    a <- (b + c) * d
-} else {
-    a <- d
-}
+    <div class="col">
+	<h3>Curly Braces</h3>
+	<ul>
+	    <li> Do not place <code>{</code> on its own line </li>
+	    <li> Place <code>}</code> on its own line unless followed by <code>else</code></li>
+	    <li> Surround <code>else</code> statements with curly braces </li>
+	</ul>
+    </div>
+    <div class="col">
+	{% highlight R %}
+	# Good
+	if (a < d) {
+	a <- (b + c) * d
+	} else {
+	a <- d
+	}
 
-# Bad
-if (a < d) 
-{
-    a <- (b + c) * d
-} else a <- d
-{% endhighlight %}
-  </div>
+	# Bad
+	if (a < d) 
+	{
+	a <- (b + c) * d
+	} else a <- d
+	{% endhighlight %}
+    </div>
 </div>
 
 <div class="section" id="line-length">
-  <div class="col">
-    <h3>Line Length</h3>
-    <ul>
-	Keep each line less than 80 characters
-    </ul>
-  </div>
-  <div class="col">
-{% highlight R %}
-# Good
-someFunction(optionA = alpha,
-             optionB = bravo,
-             optionC = charlie,    
-             optionD = delta)
+    <div class="col">
+	<h3>Line Length</h3>
+	<ul>
+	    <li>Keep each line less than 80 characters</li>
+	</ul>
+    </div>
+    <div class="col">
+	{% highlight R %}
+	# Good
+	someFunction(optionA = alpha,
+        optionB = bravo,
+        optionC = charlie,    
+        optionD = delta)
 
-# Bad
-someFunction(optionA = alpha, optionB = bravo, optionC = charlie, optionD = delta)
-{% endhighlight %}
-  </div>
+	# Bad
+	someFunction(optionA = alpha, optionB = bravo, optionC = charlie, optionD = delta)
+	{% endhighlight %}
+    </div>
 </div>
 
 <div class="heading" id="organization">
-  <h2>Organization</h2>
+    <h2>Organization</h2>
 </div>
 
 <div class="section" id="commenting">
-  <div class="col">
-    <h3>Commenting</h3>
-    <ul>
-      <li>General comments should be identified with <code>#</code> followed by a space</li>
-      <li>Inline comments need 2 spaces before the <code>#</code> </li>
-      <li>Function and object descriptions should adhere to roxygen guidelines</li>
-      <li>Separate function comments from previous code using 2 blank lines
-    </ul>
- </div>
- <div class="col">
-{% highlight R %}
-#' Add together two numbers.
-#' 
-#' @param x A number.
-#' @param y A number.
-#' @return The sum of x and y.
-#'
-#' @examples
-#' add(1, 1)
-#' add(10, 1)
-add <- function(x, y) {
-  # general comment
-  x + y  # inline comment
-}
-{% endhighlight %}
-  </div>
+    <div class="col">
+	<h3>Commenting</h3>
+	<ul>
+	    <li>General comments should be identified with <code>#</code> followed by a space</li>
+	    <li>Inline comments need 2 spaces before the <code>#</code> </li>
+	    <li>Function and object descriptions should adhere to roxygen guidelines</li>
+	    <li>Separate function comments from previous code using 2 blank lines
+	</ul>
+    </div>
+    <div class="col">
+	{% highlight R %}
+	#' Add together two numbers.
+	#' 
+	#' @param x A number.
+	#' @param y A number.
+	#' @return The sum of x and y.
+	#'
+	#' @examples
+	#' add(1, 1)
+	#' add(10, 1)
+	add <- function(x, y) {
+	# general comment
+	x + y  # inline comment
+	}
+	{% endhighlight %}
+    </div>
 </div>
 
 
 <div class="heading" id="tips">
-  <h2>Additional Tips</h2>
+    <h2>Additional Tips</h2>
 </div>
 
 <div class="section" id="loops">
-  <div class="col">
-    <h3>Loops</h3>
-    <ul>
-      <li>Use <code>seq(along = x)</code> to protect against instances where <code>x</code> is empty</li>
-      <li>Use <code>apply, lapply, etc</code> when possible
-    </ul>
- </div>
- <div class="col">
-{% highlight R %}
-# Good
-lapply(seq(along = x), function(i) {
-    doSomething(i)
-})
+    <div class="col">
+	<h3>Loops</h3>
+	<ul>
+	    <li>Use <code>seq(along = x)</code> to protect against instances where <code>x</code> is empty</li>
+	    <li>Use <code>apply, lapply, etc</code> when possible
+	</ul>
+    </div>
+    <div class="col">
+	{% highlight R %}
+	# Good
+	lapply(seq(along = x), function(i) {
+	doSomething(i)
+	})
 
-# Acceptable
-for (i in seq(along = x)) {
-    doSomething(i)
-}
+	# Acceptable
+	for (i in seq(along = x)) {
+	doSomething(i)
+	}
 
-# Bad
-for (i in 1:length(x)) {
-    doSomething(i)
-}
-{% endhighlight %}
-  </div>
+	# Bad
+	for (i in 1:length(x)) {
+	doSomething(i)
+	}
+	{% endhighlight %}
+    </div>
 </div>
 <div class="section" id="repeat">
-  <div class="col">
-    <h3>Repeat</h3>
-    <ul>
-      <li>Use <code>repeat</code> for better interpretability</li>
-    </ul>
- </div>
- <div class="col">
-{% highlight R %}
-# Good
-repeat {
-  ...
-}
+    <div class="col">
+	<h3>Repeat</h3>
+	<ul>
+	    <li>Use <code>repeat</code> for better interpretability</li>
+	</ul>
+    </div>
+    <div class="col">
+	{% highlight R %}
+	# Good
+	repeat {
+	...
+	}
 
-# Bad
-while (TRUE) {
-  ...
-}
-{% endhighlight %}
-  </div>
+	# Bad
+	while (TRUE) {
+	...
+	}
+	{% endhighlight %}
+    </div>
 </div>
 
 
 <div class="heading" id="references-and-resources">
-  <h2>References and Resources</h2>
+    <h2>References and Resources</h2>
 </div>
 
 <div class="section" id="additional-guides">
-  <div class="col">
-    <h3>Additional Guides</h3>
-    <li><a href="https://style.tidyverse.org/">The tidyverse style guide by Hadley Wickham</a></li>
-    <li><a href="http://r-pkgs.had.co.nz/style.html">(an older) R Style Guide by Hadley Wickham</a></li>
-    <li><a href="https://google.github.io/styleguide/Rguide.xml">Google's R Style Guide</a></li>
-    <li><a href="https://docs.google.com/document/d/1esDVxyWvH8AsX-VJa-8oqWaHLs4stGlIbk8kLc5VlII/edit">R Coding Conventions by Henrik Bengtsson</li>
-    <li><a href="http://master.bioconductor.org/developers/how-to/coding-style/">Bioconductor Coding Style</a></li>
-  </div>
+    <div class="col">
+	<h3>Additional Guides</h3>
+	<li><a href="https://style.tidyverse.org/">The tidyverse style guide by Hadley Wickham</a></li>
+	<li><a href="http://r-pkgs.had.co.nz/style.html">(an older) R Style Guide by Hadley Wickham</a></li>
+	<li><a href="https://google.github.io/styleguide/Rguide.xml">Google's R Style Guide</a></li>
+	<li><a href="https://docs.google.com/document/d/1esDVxyWvH8AsX-VJa-8oqWaHLs4stGlIbk8kLc5VlII/edit">R Coding Conventions by Henrik Bengtsson</li>
+	    <li><a href="http://master.bioconductor.org/developers/how-to/coding-style/">Bioconductor Coding Style</a></li>
+    </div>
 </div>
 <div class="section" id="inspiration">
-  <div class="col">
-    <h3>Inspiration</h3>
-    <li><a href="http://mdo.github.io/code-guide/">Code Guide by mdo</a></li>
-  </div>
+    <div class="col">
+	<h3>Inspiration</h3>
+	<li><a href="http://mdo.github.io/code-guide/">Code Guide by mdo</a></li>
+    </div>
 </div>
 
 

@@ -3,4 +3,3 @@ description:   Best practices for readable, sharable, and verifiable R code
 url:           http://jefworks.github.io/R-style-guide/
 markdown:      rdiscount
 permalink:     pretty
-pygments:      true
